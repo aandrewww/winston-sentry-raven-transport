@@ -24,13 +24,13 @@
 ## Install
 
 ```bash
-npm install --save winston winston-raven-sentry
+npm install --save winston winston-sentry-raven-transport
 ```
 
 
 ## Usage
 
-You can configure `winston-raven-sentry` in two different ways.
+You can configure `winston-sentry-raven-transport` in two different ways.
 
 With `new winston.Logger`:
 
