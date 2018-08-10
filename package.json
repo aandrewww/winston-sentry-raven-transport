@@ -1,6 +1,6 @@
 {
   "name": "winston-sentry-raven-transport",
-  "description": "Raven/Sentry transport for the winston logger with support for Koa/Express",
+  "description": "Raven/Sentry transport for the winston logger",
   "version": "1.0.0",
   "author": "Andrew Avdeev <andrewww.avdeev@gmail.com>",
   "keywords": [
@@ -11,9 +11,7 @@
     "tools",
     "sentry",
     "transport",
-    "winston",
-    "koa",
-    "express"
+    "winston"
   ],
   "main": "index.js",
   "scripts": {
