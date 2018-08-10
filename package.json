@@ -24,6 +24,9 @@
     "url": "https://github.com/aandrewww/winston-sentry-raven-transport/issues"
   },
   "homepage": "https://github.com/aandrewww/winston-sentry-raven-transport#readme",
+  "engines": {
+    "node": ">= 6.4.0"
+  },
   "dependencies": {
     "lodash": "^4.17.10",
     "raven": "^2.6.3",
