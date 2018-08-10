@@ -1,6 +1,6 @@
 
 # winston-raven-sentry
-
+[![CircleCI](https://circleci.com/gh/aandrewww/winston-sentry-raven-transport.svg?style=svg)](https://circleci.com/gh/aandrewww/winston-sentry-raven-transport)
 [![node](https://img.shields.io/badge/node-6.4.0+-brightgreen.svg)][node-url]
 [![raven](https://img.shields.io/badge/raven-2.x+-brightgreen.svg)][raven-url]
 [![winston](https://img.shields.io/badge/winston-3.x+-brightgreen.svg)][winston-url]
