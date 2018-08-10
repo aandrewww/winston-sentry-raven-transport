@@ -1,6 +1,6 @@
 {
   "name": "winston-sentry-raven-transport",
-  "description": "Raven/Sentry transport for the winston logger",
+  "description": "Raven/Sentry transport for the winston v3 logger",
   "version": "1.0.0",
   "author": "Andrew Avdeev <andrewww.avdeev@gmail.com>",
   "keywords": [
@@ -11,7 +11,8 @@
     "tools",
     "sentry",
     "transport",
-    "winston"
+    "winston",
+    "winston3"
   ],
   "main": "index.js",
   "scripts": {

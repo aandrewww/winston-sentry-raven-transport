@@ -1,12 +1,12 @@
 
-# winston-raven-sentry
+# winston-sentry-raven-transport
 [![CircleCI](https://circleci.com/gh/aandrewww/winston-sentry-raven-transport.svg?style=svg)](https://circleci.com/gh/aandrewww/winston-sentry-raven-transport)
 [![node](https://img.shields.io/badge/node-6.4.0+-brightgreen.svg)][node-url]
 [![raven](https://img.shields.io/badge/raven-2.x+-brightgreen.svg)][raven-url]
 [![winston](https://img.shields.io/badge/winston-3.x+-brightgreen.svg)][winston-url]
 [![license](https://img.shields.io/github/license/aandrewww/winston-sentry-raven-transport.svg)][license-url]
 
-[Raven](https://github.com/getsentry/raven-node)/[Sentry](https://sentry.io) transport for the [winston](https://github.com/winstonjs/winston) logger.
+[Raven](https://github.com/geetsentry/raven-node)/[Sentry](https://sentry.io) transport for the [winston](https://github.com/winstonjs/winston) v3 logger.
 
 ## Index
 
@@ -77,14 +77,14 @@ Default Sentry options:
 
 Transport related options:
 
-* `name` (String) - transport's name (defaults to `sentry`)
+* `name` (String) - transport's name (defaults to `winston-sentry-raven`)
 * `silent` (Boolean) - suppress logging (defaults to `false`)
 * `level` (String) - transport's level of messages to log (defaults to `info`)
 * `levelsMap` (Object) - log level mapping to Sentry (see [Log Level Mapping](#log-level-mapping) below)
 
 ### Default Raven Options (`options.config`)
 
-* `logger` (String) - defaults to `winston-raven-sentry`
+* `logger` (String) - defaults to `winston-sentry-raven`
 * `captureUnhandledRejections` (Boolean) - defaults to `false`
 * `culprit` (String) - defaults to the module or function name
 * `server_name` (String) - defaults to `process.env.SENTRY_NAME` or `os.hostname()`
