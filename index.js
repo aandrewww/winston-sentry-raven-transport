@@ -60,7 +60,7 @@ class Sentry extends TransportStream {
   }
 
   log(info, callback) {
-    const { message, level } = info;
+    const { message, level, fingerprint } = info;
 
     const meta = Object.assign({}, _.omit(info, ['level', 'message', 'label']));
     setImmediate(() => {
@@ -74,6 +74,7 @@ class Sentry extends TransportStream {
     const context = {};
     context.level = this.levelsMap[level];
     context.extra = meta;
+    context.fingerprint = [fingerprint, process.env.NODE_ENV];
 
     if (context.level === 'error' || context.level === 'fatal') {
       return this.raven.captureException(message, context, () => {
