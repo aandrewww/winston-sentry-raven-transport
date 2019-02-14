@@ -1,5 +1,5 @@
 const winston = require('winston');
-const expect = require('chai').expect;
+const { expect } = require('chai');
 
 const SentryWinston = require('../index.js');
 
