@@ -1,4 +1,10 @@
-const _ = require('lodash');
+const {
+  defaults,
+  defaultsDeep,
+  isFunction,
+  omit,
+  has,
+} = require('lodash');
 const Raven = require('raven');
 const TransportStream = require('winston-transport');
 
@@ -10,9 +16,9 @@ class Sentry extends TransportStream {
   constructor(opts = {}) {
     super(opts);
     this.name = 'winston-sentry-raven';
-    const options = opts;
+    const options = Object.assign({}, opts);
 
-    _.defaultsDeep(opts, {
+    defaultsDeep(options, {
       dsn: process.env.SENTRY_DSN || '',
       config: {
         logger: 'winston-sentry-raven',
@@ -43,13 +49,13 @@ class Sentry extends TransportStream {
 
     if (options.extra) {
       options.config.extra = options.config.extra || {};
-      options.config.extra = _.defaults(options.config.extra, options.extra);
+      options.config.extra = defaults(options.config.extra, options.extra);
     }
 
     // expose the instance on the transport
     this.raven = options.raven || Raven.config(options.dsn, options.config);
 
-    if (_.isFunction(options.errorHandler) && this.raven.listeners('error').length === 0) {
+    if (isFunction(options.errorHandler) && this.raven.listeners('error').length === 0) {
       this.raven.on('error', options.errorHandler);
     }
 
@@ -62,14 +68,16 @@ class Sentry extends TransportStream {
   log(info, callback) {
     const { message, level, fingerprint } = info;
 
-    const meta = Object.assign({}, _.omit(info, ['level', 'message', 'label']));
+    const meta = Object.assign({}, omit(info, ['level', 'message', 'label']));
     setImmediate(() => {
       this.emit('logged', level);
     });
 
     if (this.silent) return callback(null, true);
 
-    if (!(level in this.levelsMap)) return callback(null, true);
+    if (!has(this.levelsMap, level)) {
+      return callback(null, true);
+    }
 
     const context = {};
     context.level = this.levelsMap[level];
