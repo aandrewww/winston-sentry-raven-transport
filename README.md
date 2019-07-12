@@ -58,7 +58,7 @@ const Sentry = require('winston-sentry-raven-transport');
 
 const logger = new winston.Logger();
 
-logger.add(Sentry, options);
+logger.add(new Sentry(options));
 ```
 
 See [Options](#options-options) below for custom configuration.
