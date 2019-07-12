@@ -29,7 +29,7 @@
     "node": ">= 6.4.0"
   },
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.14",
     "raven": "^2.6.4",
     "winston": "^3.2.1",
     "winston-transport": "^4.3.0"
