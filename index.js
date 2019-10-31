@@ -66,9 +66,11 @@ class Sentry extends TransportStream {
   }
 
   log(info, callback) {
-    const { message, level, fingerprint } = info;
+    const {
+      message, stack, level, fingerprint,
+    } = info;
 
-    const meta = Object.assign({}, omit(info, ['level', 'message', 'label']));
+    const meta = Object.assign({}, omit(info, ['level', 'message', 'stack', 'label']));
     setImmediate(() => {
       this.emit('logged', level);
     });
@@ -88,7 +90,13 @@ class Sentry extends TransportStream {
     }
 
     if (context.level === 'error' || context.level === 'fatal') {
-      return this.raven.captureException(message, context, () => {
+      let exception = message;
+      if (stack) {
+        exception = new Error(message);
+        exception.stack = stack;
+      }
+
+      return this.raven.captureException(exception, context, () => {
         callback(null, true);
       });
     }
