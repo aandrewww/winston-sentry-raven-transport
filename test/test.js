@@ -49,13 +49,13 @@ describe(TRANSPORT_NAME, () => {
 
       const err1 = new Error('My Error 1');
       logger.error(err1);
-      expect(ravenClient.captureException.lastCall.args[0].message).to.deep.equal(err1.message);
-      expect(ravenClient.captureException.lastCall.args[0].stack).to.deep.equal(err1.stack);
+      expect(ravenClient.captureException.lastCall.args[0].message).to.equal(err1.message);
+      expect(ravenClient.captureException.lastCall.args[0].stack).to.equal(err1.stack);
 
       const err2 = new Error('My Error 2');
       logger.error('There was an error: ', err2);
-      expect(ravenClient.captureException.lastCall.args[0].message).to.deep.equal(`There was an error: ${err2.message}`);
-      expect(ravenClient.captureException.lastCall.args[0].stack).to.deep.equal(err2.stack);
+      expect(ravenClient.captureException.lastCall.args[0].message).to.equal(`There was an error: ${err2.message}`);
+      expect(ravenClient.captureException.lastCall.args[0].stack).to.equal(err2.stack);
     });
 
     it('winston.log should be able to propagate fingerprint to raven', async () => {
