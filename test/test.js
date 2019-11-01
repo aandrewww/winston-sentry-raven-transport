@@ -57,5 +57,19 @@ describe(TRANSPORT_NAME, () => {
       expect(ravenClient.captureException.lastCall.args[0].message).to.deep.equal(`There was an error: ${err2.message}`);
       expect(ravenClient.captureException.lastCall.args[0].stack).to.deep.equal(err2.stack);
     });
+
+    it('winston.log should be able to propagate fingerprint to raven', async () => {
+      const ravenClient = new raven.Client(DSN);
+      ravenClient.captureException = sinon.spy((exception, context, cb) => cb());
+
+      const logger = winston.createLogger({
+        transports: [new SentryWinston({ raven: ravenClient })],
+      });
+
+      const fingerprint = ['abc', 'def'];
+      logger.error('some error message', { fingerprint });
+      expect(ravenClient.captureException.lastCall.args[1].extra.fingerprint)
+        .to.deep.equal(fingerprint);
+    });
   });
 });
