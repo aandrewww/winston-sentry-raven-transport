@@ -1,7 +1,7 @@
 {
   "name": "winston-sentry-raven-transport",
   "description": "Raven/Sentry transport for the winston v3 logger",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Andrew Avdeev <andrewww.avdeev@gmail.com>",
   "keywords": [
     "logger",
@@ -29,7 +29,7 @@
     "node": ">= 6.4.0"
   },
   "dependencies": {
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "raven": "^2.6.4",
     "winston": "^3.2.1",
     "winston-transport": "^4.3.0"
@@ -41,7 +41,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.16.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.2.3",
     "sinon": "^7.5.0"
   }
 }
